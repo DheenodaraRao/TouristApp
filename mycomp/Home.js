@@ -12,6 +12,14 @@ import {
   View
 } from 'react-native';
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
+import { FloatingAction } from 'react-native-floating-action';
+
+const actions = [{
+  text: 'History',
+  icon: {uri: 'https://res.cloudinary.com/touristimages/image/upload/v1532093526/touristimages/baseline_history_white_18dp.png'},
+  name: 'history',
+  position: 1
+}];
 
 type Props = {};
 export default class Home extends Component {
@@ -22,7 +30,8 @@ export default class Home extends Component {
 
   render() {
     return (
-      <ScrollView style={inputStyles.container}
+      <View style={inputStyles.container}>
+      <ScrollView
       showsHorizontalScrollIndicator={true}
       >
 
@@ -61,11 +70,27 @@ export default class Home extends Component {
           <CardButton
             onPress={() => {}}
             title="Explore"
-            color="#BEA42E"
+            color="#3b5998"
           />
         </CardAction>
       </Card>
+
     </ScrollView>
+
+      <FloatingAction
+          actions={actions}
+          overrideWithAction={true}
+          color={'#3b5998'}
+          onPressItem={
+            () => {
+              this.props.navigation.navigate('History')
+            }
+          }
+          iconWidth = {30}
+          iconHeight = {30}
+          distanceToEdge	= {20}
+        />
+    </View>
     );
   }
 }

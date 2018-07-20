@@ -14,9 +14,18 @@ import {
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 
 type Props = {};
-export default class History extends Component<Props> {
+export default class History extends Component{
+
+  //setting the back button and title
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerLeft: '',
+      title: 'History'
+    };
+  };
   render() {
     return (
+      //can be replaced with flatmap etc, scrollview is just for initial development
       <ScrollView style={inputStyles.container}
       showsHorizontalScrollIndicator={true}
       >

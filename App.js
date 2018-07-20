@@ -1,6 +1,8 @@
+import React from 'react';
 import {createStackNavigator} from 'react-navigation';
 import Home from './mycomp/Home';
 import History from './mycomp/History';
+import MyLogo from './mycomp/MyLogo';
 
 export default createStackNavigator({
 
@@ -15,11 +17,13 @@ export default createStackNavigator({
     initialRouteName: 'Home',
     navigationOptions:{
       headerStyle:{
-        backgroundColor: '#3b5998', //Sangria color
+        backgroundColor: '#3b5998', //Dark Blue
       },
-      headerTintColor: '#BEA42E',
+      headerTintColor: 'white',
       headerTitleStyle:{
         fontWeight: 'bold',
+        marginLeft: 0,
       },
+      headerLeft: <MyLogo />
     },
 });
