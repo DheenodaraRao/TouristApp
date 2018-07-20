@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 import { FloatingAction } from 'react-native-floating-action';
+import MyCard from './MyCard';
 
 const actions = [{
   text: 'History',
@@ -35,7 +36,10 @@ export default class Home extends Component {
       showsHorizontalScrollIndicator={true}
       >
 
-      {/*Card 1*/}
+      {/*MyCard Component*/}
+      <MyCard />
+
+      {/*Card Hard Coded*/}
       <Card style={inputStyles.card}>
         <CardImage 
           source={{uri: 'https://res.cloudinary.com/touristimages/image/upload/v1531925296/touristimages/pantai-cenang-langkawi.jpg'}} 
@@ -44,26 +48,6 @@ export default class Home extends Component {
           title="Pantai Cenang"
         />
         <CardContent text="Langkawi, Kedah" />
-        <CardAction 
-          separator={true} 
-          inColumn={false}>
-          <CardButton
-            onPress={() => {}}
-            title="Explore"
-            color="#3b5998"
-          />
-        </CardAction>
-      </Card>
-    
-    {/*Card 2*/}
-    <Card style={inputStyles.card}>
-        <CardImage 
-          source={{uri: 'http://bit.ly/2GfzooV'}} 
-        />
-        <CardTitle
-          title="Pantai Rendang"
-        />
-        <CardContent text="Pulau Rendang, Kedah" />
         <CardAction 
           separator={true} 
           inColumn={false}>
@@ -106,5 +90,4 @@ const inputStyles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
   }
-  
 });
