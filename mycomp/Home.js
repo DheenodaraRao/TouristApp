@@ -105,6 +105,6 @@ const inputStyles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 1,
     marginBottom: 20,
-  }
+  },
   
 });
