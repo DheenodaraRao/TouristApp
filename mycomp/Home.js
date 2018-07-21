@@ -7,9 +7,10 @@
 import React, { Component } from 'react';
 import {
   Platform,
-  StyleSheet, Touchable,
+  StyleSheet,
   Text, ScrollView,
-  View
+  View,
+  Picker,
 } from 'react-native';
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 import { FloatingAction } from 'react-native-floating-action';
@@ -27,6 +28,9 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+          'selectedState' : '',
+        }
     };
 
   render() {
@@ -36,28 +40,23 @@ export default class Home extends Component {
       showsHorizontalScrollIndicator={true}
       >
 
-      {/*MyCard Component*/}
-      <MyCard />
+      {/*Picker Component*/}
+      <Picker
+        mode={'dropdown'}
+        prompt={'Select State'}
+        selectedValue = {this.state.selectedState}
 
-      {/*Card Hard Coded*/}
-      <Card style={inputStyles.card}>
-        <CardImage 
-          source={{uri: 'https://res.cloudinary.com/touristimages/image/upload/v1531925296/touristimages/pantai-cenang-langkawi.jpg'}} 
-        />
-        <CardTitle
-          title="Pantai Cenang"
-        />
-        <CardContent text="Langkawi, Kedah" />
-        <CardAction 
-          separator={true} 
-          inColumn={false}>
-          <CardButton
-            onPress={() => {}}
-            title="Explore"
-            color="#3b5998"
-          />
-        </CardAction>
-      </Card>
+        onValueChange = {
+          (newState, newStateIndex) => this.setState({selectedState: newState})
+        }
+      >
+
+        <Picker.Item label='Selangor' value='01'/>
+        <Picker.Item label='Kedah' value='02'/>
+        <Picker.Item label='Johor' value='03'/>
+      </Picker>
+
+      <Text> State is {this.state.selectedState}</Text>
 
     </ScrollView>
 
@@ -89,5 +88,11 @@ const inputStyles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 1,
     marginBottom: 20,
+  },
+  style:{
+    color: '#3b5998',
+    fontSize: 20,
+    margin: 10,
+    padding: 10,
   }
 });
