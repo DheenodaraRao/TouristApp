@@ -12,9 +12,11 @@ import {
   View,
   Picker,
 } from 'react-native';
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 import { FloatingAction } from 'react-native-floating-action';
 import MyCard from './MyCard';
+import PickerWithLabel from './PickerWithLabel';
+
+let mystates = require('./StateCodes');
 
 const actions = [{
   text: 'History',
@@ -41,25 +43,22 @@ export default class Home extends Component {
       >
 
       {/*Picker Component*/}
-      <Picker
-        mode={'dropdown'}
+      <PickerWithLabel
+        label={'State'}
         prompt={'Select State'}
-        selectedValue = {this.state.selectedState}
+        items={mystates.states}
+        value={this.state.selectedState}
+        onValueChange={(itemValue, itemIndex) => {
+          this.setState({selectedState: itemValue})
+        }}
+      />
 
-        onValueChange = {
-          (newState, newStateIndex) => this.setState({selectedState: newState})
-        }
-      >
-
-        <Picker.Item label='Selangor' value='01'/>
-        <Picker.Item label='Kedah' value='02'/>
-        <Picker.Item label='Johor' value='03'/>
-      </Picker>
-
+      {/*Testing out picker*/}
       <Text> State is {this.state.selectedState}</Text>
 
     </ScrollView>
 
+        {/*Floating Action Component*/}
       <FloatingAction
           actions={actions}
           overrideWithAction={true}
