@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from 'react-navigation';
 import Home from './mycomp/Home';
 import History from './mycomp/History';
+import Details from './mycomp/Details';
 import MyLogo from './mycomp/MyLogo';
 
 export default createStackNavigator({
@@ -12,6 +13,9 @@ export default createStackNavigator({
   History:{
     screen: History,
   },
+  Details: {
+    screen: Details,
+  }
 },
   {
     initialRouteName: 'Home',

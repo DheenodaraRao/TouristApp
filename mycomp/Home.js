@@ -44,7 +44,6 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
-
       this._load();
     }
 
@@ -121,7 +120,16 @@ export default class Home extends Component {
       cardTitle={item.placename}
       cardImageLink={item.imageurl}
       cardContent={item.location}
-      
+      onPress={
+        () => {
+          this.props.navigation.navigate('Details',
+        {
+          itemId : item.id,
+          itemName: item.placename,
+        })
+        }
+        
+      }
       />)
       }
     </ScrollView>
