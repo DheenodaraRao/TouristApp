@@ -14,7 +14,7 @@ import {
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 
 type Props = {};
-export default class MyCard extends Component{
+export default class DetailCard extends Component{
 
     constructor(props){
         super(props)
@@ -36,16 +36,6 @@ export default class MyCard extends Component{
 
         <CardContent text= { this.props.cardContent ? this.props.cardContent: "No Content"}
         />
-
-        <CardAction 
-          separator={true} 
-          inColumn={false}>
-          <CardButton
-            onPress={this.props.onPress}
-            title="Explore"
-            color="#3b5998"
-          />
-        </CardAction>
       </Card>
     );
   }
