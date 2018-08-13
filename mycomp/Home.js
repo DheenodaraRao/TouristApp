@@ -19,6 +19,7 @@ import PickerWithLabel from './PickerWithLabel';
 
 let mystates = require('./StateCodes');
 let path = require('../config/serverpath');
+let SQLite = require('react-native-sqlite-storage');
 
 const actions = [{
   text: 'History',
@@ -41,6 +42,27 @@ export default class Home extends Component {
         }
 
         this._load = this._load.bind(this);
+
+        this._query = this._query.bind(this);
+
+        this.db = SQLite.openDatabase({
+          name: 'historydb',
+          createFromLocation : '~historydb.sqlite'
+        }, this.openDb, this.errorDb);
+    }
+
+    openDb(){
+      console.log('Database opened successfully');
+    }
+  
+    errorDb(err){
+      console.log('Error occured ', err);
+    }
+  
+    _query(theName, theLocation){
+      this.db.transaction((tx) => {
+        tx.executeSql('insert into history(name, location) values(?, ?)', [theName, theLocation])
+      })
     }
 
     componentDidMount(){
@@ -122,6 +144,7 @@ export default class Home extends Component {
       cardContent={item.location}
       onPress={
         () => {
+          this._query(item.placename, item.location);
           this.props.navigation.navigate('Details',
         {
           itemId : item.id,
