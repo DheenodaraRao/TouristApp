@@ -50,7 +50,7 @@ export default class History extends Component{
 
   _query(){
     this.db.transaction((tx) => {
-      tx.executeSql('Select distinct id, name, location from history order by id desc', [], (tx, results) => {
+      tx.executeSql('Select * from history order by id desc', [], (tx, results) => {
         this.setState({places: results.rows.raw()});
       })
     })
