@@ -4,6 +4,7 @@ import Home from './mycomp/Home';
 import History from './mycomp/History';
 import Details from './mycomp/Details';
 import MyLogo from './mycomp/MyLogo';
+import {fromTop, fromLeft, } from 'react-navigation-transitions'
 
 export default createStackNavigator({
 
@@ -19,6 +20,7 @@ export default createStackNavigator({
 },
   {
     initialRouteName: 'Home',
+    transitionConfig: () => fromLeft(500),
     navigationOptions:{
       headerStyle:{
         backgroundColor: '#3b5998', //Dark Blue
