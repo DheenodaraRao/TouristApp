@@ -12,6 +12,8 @@ npm install                 //installing all required packages
 npm run start               //linux
 react-native run-android    //windows
 ```
+### Missing Files
++ Cloud Service File (open an issue to get it)
 ### How to contribute
 ```js
 git pull
